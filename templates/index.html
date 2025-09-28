@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Plant Disease Detector</title>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="site-header">
+        <div class="container header-inner">
+            <div class="brand">
+                <img src="{{ url_for('static', filename='assets/logo.png') }}" alt="logo" class="logo"
+                    onerror="this.style.display='none'">
+                <h1>Plant Disease Detector</h1>
+            </div>
+            <p class="tagline">Upload a leaf photo — detect disease instantly & get solutions</p>
+            <p class="header-desc">
+                🌿 An AI-powered tool designed for farmers, gardeners, and researchers.<br>
+                Detect plant diseases early, prevent crop loss, and boost productivity.
+            </p>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <!-- Left side: Text content -->
+        <div class="hero-content">
+            <h2>🌾 AI for a Greener Tomorrow</h2>
+            <p>
+                Our system analyzes leaf images with advanced deep learning models to identify plant diseases in
+                seconds.<br>
+                Get instant, reliable results and recommended treatments to keep your crops healthy.
+            </p>
+            <a href="#upload" class="btn primary hero-btn">🚀 Try It Now</a>
+        </div>
+
+        <!-- Right side: PNG images -->
+        <div class="hero-image">
+            <img src="{{ url_for('static', filename='assets/pngtree-biological-control-of-plant-disease-isolated-cartoon-vector-illustrations-picture-image_865572.png') }}" alt="Plant illustration 1"
+                alt="Plant illustration 1">
+            <img src="{{ url_for('static', filename='assets/—Pngtree—farmer sprays pesticide agriculture concept_15113439.png') }}" alt="Plant illustration 2" class="second-png" class="second-png">
+        </div>
+    </section>
+
+    <!-- How It Works + Features -->
+    <section class="how-benefits">
+        <div class="how-col">
+            <h2>How It Works</h2>
+            <p class="section-desc">In just 3 simple steps, detect plant diseases instantly 🌱</p>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-icon">📸</div>
+                    <h3>Step 1</h3>
+                    <p>Upload a clear photo of the leaf.</p>
+                </div>
+                <div class="step">
+                    <div class="step-icon">🤖</div>
+                    <h3>Step 2</h3>
+                    <p>Our AI analyzes the image within seconds.</p>
+                </div>
+                <div class="step">
+                    <div class="step-icon">🌿</div>
+                    <h3>Step 3</h3>
+                    <p>Get instant results with disease details & solutions.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="benefits-col">
+            <h2>Key Features & Benefits</h2>
+            <p class="section-desc">Why farmers, gardeners, and researchers love it 💚</p>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Instant Results</h3>
+                    <p>AI-powered detection delivers accurate results in seconds.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3>High Accuracy</h3>
+                    <p>Trained on thousands of leaf images for reliable predictions.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🌍</div>
+                    <h3>Farmer-Friendly</h3>
+                    <p>Simple design made for everyone — no tech barrier.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💡</div>
+                    <h3>Smart Solutions</h3>
+                    <p>Get recommended treatments and preventive measures instantly.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Main -->
+    <main class="container main-grid" id="upload">
+
+        <!-- Upload Card -->
+        <section class="card upload-card">
+            <h2>📤 Upload Image</h2>
+            <p class="muted">Choose a file or take a photo</p>
+
+            <!-- File Upload -->
+            <input id="fileInput" type="file" accept="image/*" class="hidden-input">
+            <label for="fileInput" class="file-btn">Choose Image</label>
+
+            <!-- Controls -->
+            <div class="controls">
+                <button id="btnPredict" class="btn primary" type="button">🔍 Predict</button>
+                <button id="btnClear" class="btn danger" type="button">❌ Clear</button>
+            </div>
+
+            <div class="hint">💡 Take a clear, close-up photo of the affected leaf.</div>
+
+            <!-- Camera Feature -->
+            <div class="camera-controls">
+                <button id="cameraBtn" class="btn secondary" type="button">📷 Camera</button>
+                <video id="videoPreview" autoplay playsinline style="display:none"></video>
+                <button id="captureBtn" class="btn capture-btn" style="display:none">📸 Capture</button>
+            </div>
+
+            <!-- Drag-and-Drop -->
+            <div id="dropZone" class="drop-zone">
+                Drag & Drop Image Here
+            </div>
+        </section>
+
+        <!-- Preview Card -->
+        <section class="card preview-card">
+            <h2>👀 Preview</h2>
+            <div class="preview-area">
+                <img id="imgPreview" src="{{ url_for('static', filename='assets/placeholder.png') }}" alt="preview">
+            </div>
+        </section>
+
+        <!-- Result Card -->
+        <section class="card result-card">
+            <h2>📊 Result</h2>
+            <div id="result" class="result-content">
+                <p class="muted">No prediction yet. Click <strong>Predict</strong> after uploading an image.</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <p>
+                📚 <a href="https://yourdataset-link.com" target="_blank">Dataset</a> •
+                💻 <a href="https://github.com/yourteam-repo" target="_blank">GitHub Repo</a> •
+                🎥 <a href="demo-video-link" target="_blank">Demo Video</a>
+            </p>
+            <small>Made with ❤ for Hackathon • Team PlantCare</small>
+        </div>
+    </footer>
+
+    <!-- JS -->
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+
+</html>
