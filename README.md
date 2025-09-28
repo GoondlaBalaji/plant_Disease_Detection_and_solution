@@ -148,3 +148,13 @@ By combining:
 🌍 *Impact*: Farmers can detect diseases early, take preventive action, reduce crop losses, and improve yields.  
 
 ✨ In conclusion, this project demonstrates how *AI + Web Development* can work hand-in-hand to solve *real-world agricultural challenges*.
+
+
+### 🌐 Homepage (Frontend UI)
+![Homepage](./assets/ui1.png) ![Homepage](./assets/ui2.png)
+
+![Homepage](./assets/ui3.png)
+
+
+### 📊 Prediction Result Page
+![Prediction Result](./assets/op1.png)
